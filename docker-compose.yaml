@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+    volumes:
+      - "./api/:/opt/app/api"
+      - "./src/:/opt/app/src"
+    ports:
+      - "8081:80"
+    tty: true
